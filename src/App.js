@@ -59,6 +59,10 @@ function App() {
               BASE_URL={BASE_URL} />
           </Route>
 
+          <Route exact path = {"/activities"}>
+            <Activities />
+          </Route>
+
         </Switch>
       </Router>
     </div>
