@@ -9,15 +9,18 @@ import Home from './components/Home';
 import styles from './App.module.css';
 function App() {
   const BASE_URL = 'http://fitnesstrac-kr.herokuapp.com/api';
-  
+
   const jwt = localStorage.getItem('jwt');
   const [myUserName, setMyUserName] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
-
-
-
+  const [name, setName] = useState('');
+  const [goal, setGoal] = useState('');
+  const [creatorName, setCreatorName] = useState('');
+  const [activityName, setActivityName] = useState('');
+  const [description, setDescription] = useState('');
+  const [duration, setDuration] = useState('');
+  const [count, setCount] = useState('');
 
   return (
     <div className="App">
@@ -44,8 +47,8 @@ function App() {
           <Route exact path={"/"}>
             <Login
               username={username} setUsername={setUsername}
-              password={password} setPassword={setPassword} myUserName={myUserName} setMyUserName={setMyUserName} BASE_URL={BASE_URL} 
-              />
+              password={password} setPassword={setPassword} myUserName={myUserName} setMyUserName={setMyUserName} BASE_URL={BASE_URL}
+            />
           </Route>
 
           <Route exact path={"/signup"}>
@@ -56,6 +59,26 @@ function App() {
               setUsername={setUsername}
               myUserName={myUserName}
               setMyUserName={setMyUserName}
+              BASE_URL={BASE_URL} />
+          </Route>
+
+          <Route exact path={"/routines"}>
+            <Routines
+              creatorName={creatorName}
+              setCreatorName={setCreatorName}
+              activityName={activityName}
+              setActivityName={setActivityName}
+              duration={duration}
+              setDuration={setDuration}
+              count={count}
+              setCount={setCount}
+              goal={goal}
+              setGoal={setGoal}
+              name={name}
+              setName={setName}
+              description={description}
+              setDescription={setDescription}
+              jwt={jwt}
               BASE_URL={BASE_URL} />
           </Route>
 
