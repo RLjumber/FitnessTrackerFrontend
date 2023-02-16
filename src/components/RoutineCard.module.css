@@ -11,4 +11,5 @@
 .text {
       margin: 2px 10px 2px 10px;
       font-weight: bold;
+      align-items: center;
 }
