@@ -62,6 +62,7 @@ function App() {
               BASE_URL={BASE_URL} />
           </Route>
 
+ rob-branch
           <Route exact path={"/routines"}>
             <Routines
               creatorName={creatorName}
@@ -80,6 +81,11 @@ function App() {
               setDescription={setDescription}
               jwt={jwt}
               BASE_URL={BASE_URL} />
+          </Route>
+          
+          <Route exact path = {"/activities"}>
+            <Activities />
+ main
           </Route>
 
         </Switch>
