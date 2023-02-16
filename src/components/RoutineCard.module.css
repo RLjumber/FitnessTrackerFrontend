@@ -5,10 +5,11 @@
       align-items: center;
       width: 90%;
       max-width: 90%;
-      margin-top: 5px;
+      margin-top: 5px;  
 }
 
 .text {
-      margin: 2px;
+      margin: 2px 10px 2px 10px;
       font-weight: bold;
+      align-items: center;
 }

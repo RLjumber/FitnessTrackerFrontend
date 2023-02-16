@@ -18,11 +18,12 @@
       max-width: 90%;
 }
 
-.rountines_text {
+.routines_text {
       display: flex;
       flex-direction: column;
       margin-bottom: 15px;
       align-items: center;
+      align-content: center;
       width: 90%;
       max-width: 90%;
       border: solid 2px black;
@@ -30,6 +31,3 @@
       background-color: lightblue;
 }
 
-.routine_button {
-      margin-bottom: 10px;
-}
