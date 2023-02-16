@@ -4,6 +4,7 @@ import Signup from './components/Signup';
 import Login from './components/Login';
 import Routines from './components/Routines';
 import Activities from './components/Activities';
+import AddActivity from './components/AddActivity';
 import MyRoutines from './components/MyRoutines';
 import Home from './components/Home';
 import styles from './App.module.css';
@@ -62,7 +63,6 @@ function App() {
               BASE_URL={BASE_URL} />
           </Route>
 
- rob-branch
           <Route exact path={"/routines"}>
             <Routines
               creatorName={creatorName}
@@ -83,9 +83,16 @@ function App() {
               BASE_URL={BASE_URL} />
           </Route>
           
+          <Route exact path = {"/addactivity"}>
+            <AddActivity
+            BASE_URL={BASE_URL}
+            jwt={jwt} />
+          </Route>
+          
           <Route exact path = {"/activities"}>
-            <Activities />
- main
+            <Activities
+            BASE_URL={BASE_URL}
+            />
           </Route>
 
         </Switch>
