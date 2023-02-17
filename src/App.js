@@ -8,6 +8,7 @@ import AddActivity from './components/AddActivity';
 import MyRoutines from './components/MyRoutines';
 import Home from './components/Home';
 import styles from './App.module.css';
+import AddRoutine from './components/AddRoutine';
 function App() {
   const BASE_URL = 'http://fitnesstrac-kr.herokuapp.com/api';
 
