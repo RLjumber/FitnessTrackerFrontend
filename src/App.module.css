@@ -38,3 +38,7 @@ a:hover {
 a:active {
       text-decoration: underline;
 }
+
+.App {
+      background-color: rgb(135, 135, 135);
+}
