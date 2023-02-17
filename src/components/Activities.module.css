@@ -1,0 +1,32 @@
+.container {
+    width: 100vw;
+    max-width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: auto;
+    padding: 0;
+}
+
+.top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.activity {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    align-items: center;
+    align-content: center;
+    width: 50%;
+    max-width: 50%;
+    border: solid 2px black;
+    border-radius: 20px;
+    background-color: lightblue;
+    font-weight: 600;
+    font-size: larger;
+}
