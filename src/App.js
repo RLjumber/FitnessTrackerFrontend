@@ -9,6 +9,7 @@ import MyRoutines from './components/MyRoutines';
 import Home from './components/Home';
 import styles from './App.module.css';
 import AddRoutine from './components/AddRoutine';
+
 function App() {
   const BASE_URL = 'http://fitnesstrac-kr.herokuapp.com/api';
 
@@ -96,26 +97,21 @@ function App() {
             />
           </Route>
 
-          <Route exact path={"/:username/routines"}
-            render={
-              (routeProps) => {
-                const {
-                  match: {
-                    params: {
-                      username,
-                    },
-                  },
-                } = routeProps;
-                return (
-                  <MyRoutines
-                    jwt={jwt}
-                    BASE_URL={BASE_URL}
-                    username={username}
-                  />
-                );
-              }
-            }
-          />
+          <Route exact path = {"/myroutines"}>
+            <MyRoutines 
+              BASE_URL={BASE_URL}
+              jwt={jwt}
+              myUserName={myUserName}
+              setMyUserName={setMyUserName}
+              />
+          </Route>
+          
+          <Route exact path = {"/addroutine"}>
+            <AddRoutine
+            BASE_URL={BASE_URL}
+            jwt={jwt}
+            />
+          </Route>
 
         </Switch>
       </Router>
