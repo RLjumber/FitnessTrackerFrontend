@@ -9,6 +9,7 @@ const Activities = (props) => {
     const [activities, setActivities] = useState([]);
     const BASE_URL = props.BASE_URL;
     const jwt = localStorage.getItem('jwt');
+
     useEffect(() => {
         fetch(`${BASE_URL}/activities`, {
             headers: {
@@ -20,7 +21,7 @@ const Activities = (props) => {
                 //console.log("Activities: ", result);
             })
             .catch(console.error);
-    }, []);
+    }, [BASE_URL]);
 
     //console.log("SCARY", activities)
     
