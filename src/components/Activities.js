@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import buttonStyles from './button.module.css';
+import styles from './Activities.module.css';
 
 
 
@@ -30,17 +31,17 @@ const Activities = (props) => {
   
     return (
         <div>
-            <div >
+            <div className={styles.top}>
                 <h2>Activities</h2>
                 {jwt
                     ? <Link to="/addactivity"><button className={buttonStyles.button}>Add Activity</button></Link>
                     : null}
             </div>
 
-            <ul>
+            <ul className={styles.container}>
                 {numDescending.map(activity => {
                     return (
-                        <li key={activity.id} className="activity">
+                        <li key={activity.id} className={styles.activity}>
                             <p>{activity.name}</p>
                             <p>{activity.description}</p>
                         </li>
