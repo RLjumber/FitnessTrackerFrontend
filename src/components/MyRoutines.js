@@ -3,6 +3,7 @@ import { useHistory, Link } from "react-router-dom";
 import RoutineCard from './RoutineCard';
 import styles from './MyRoutines.module.css';
 import buttonStyles from './button.module.css';
+import { AddActivityToRoutine } from './AddActivityToRoutine';
 
 const MyRoutines = (props) => {
       const BASE_URL = props.BASE_URL;
@@ -58,6 +59,11 @@ const MyRoutines = (props) => {
                                                       history.push(`/myroutines/${routine.id}`);
                                                 }
                                                 }>Edit Routine</button>
+                                            <button className={buttonStyles.button}
+                                                onClick={() => {
+                                                    AddActivityToRoutine();
+                                                }}
+                                            >Add Activity</button>
                                     </span>
                               
                         </div>
