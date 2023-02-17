@@ -96,7 +96,14 @@ function App() {
             />
           </Route>
 
-          <Route exact path={"/:username/routines"}
+          <Route exact path = {"/myroutines"}>
+            <MyRoutines 
+              BASE_URL={BASE_URL}
+              jwt={jwt}
+              />
+          </Route>
+
+          {/* <Route exact path={"/:username/routines"}
             render={
               (routeProps) => {
                 const {
@@ -115,7 +122,7 @@ function App() {
                 );
               }
             }
-          />
+          /> */}
 
         </Switch>
       </Router>
