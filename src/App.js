@@ -25,7 +25,7 @@ function App() {
   const [count, setCount] = useState('');
 
   return (
-    <div className="App">
+    <div className={styles.App}>
       <Router >
         <header className={styles.top}>
           <Link to="/home"> Home </Link>
@@ -96,9 +96,26 @@ function App() {
             />
           </Route>
 
-          <Route exact path = {"/myroutines"}>
-            <AddRoutine BASE_URL = {BASE_URL}/>
-          </Route>
+          <Route exact path={"/:username/routines"}
+            render={
+              (routeProps) => {
+                const {
+                  match: {
+                    params: {
+                      username,
+                    },
+                  },
+                } = routeProps;
+                return (
+                  <MyRoutines
+                    jwt={jwt}
+                    BASE_URL={BASE_URL}
+                    username={username}
+                  />
+                );
+              }
+            }
+          />
 
         </Switch>
       </Router>
