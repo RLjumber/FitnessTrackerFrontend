@@ -1,0 +1,38 @@
+.container {
+      width: 100vw;
+      max-width: 100vw;
+      height: 100vh;
+      max-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: auto;
+}
+
+.routines_top {
+      height: 300px;
+      display: flex;
+      flex-direction: row;
+      margin-top: 100px;
+      margin-bottom: 15px;
+      align-items: center;
+      width: 90%;
+      max-width: 90%;
+}
+
+.routines_text {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 15px;
+      align-items: center;
+      align-content: center;
+      width: 90%;
+      max-width: 90%;
+      border: solid 2px black;
+      border-radius: 20px;
+      background-color: lightblue;
+}
+
+.postcard_button {
+      margin-bottom: 10px;
+}

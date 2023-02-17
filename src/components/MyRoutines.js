@@ -1,103 +1,71 @@
-import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react'
+import { useHistory, Link } from "react-router-dom";
+import RoutineCard from './RoutineCard';
+import styles from './MyRoutines.module.css';
 import buttonStyles from './button.module.css';
-import styles from './Routines.module.css';
 
-const AddRoutine = (props) => {
-      const jwt = props.jwt;
+const MyRoutines = (props) => {
       const BASE_URL = props.BASE_URL;
-      const [goal, setGoal] = useState('');
-      const [name, setName] = useState('');
-      const [isPublic, setIsPublic] = useState(false);
+      const [routines, setRoutines] = useState([]);
+      const jwt = props.jwt;
+      const myUserName = props.myUserName;
+      const history = useHistory();
+      console.log(myUserName);
 
-      async function addRoutine() {
-            try {
+      useEffect(() => {
+            async function fetchMyRoutines() {
+                  try {
+                        const response = await fetch(
+                              `${BASE_URL}/users/${myUserName}/routines`, {
+                              headers: {
+                                    'Content-Type': 'application/json',
+                                    'Authorization': `Bearer ${jwt}`
+                              },
+                        });
 
-                  const response = await fetch(
-                        `${BASE_URL}/routines`, {
-                        method: "POST",
-                        headers: {
-                              "Content-Type": "application/json",
-                              "Authorization": `Bearer ${jwt}`,
-                        },
-                        body: JSON.stringify({
-                              name: name,
-                              goal: goal,
-                              isPublic: isPublic
-                        }),
+                        const json = await response.json();
+                        setRoutines(json);
+                        console.log(json);
+
+                  } catch (error) {
+                        console.error(error);
                   }
-                  );
+            };
+            fetchMyRoutines();
+      }, [BASE_URL, jwt, myUserName, setRoutines]);
 
-                  const json = await response.json();
-                  if (json.error) {
-                        alert(json.error);
-                  }
-            } catch (error) {
-                  console.error(error);
-            }
-      }
-
-      async function getAllPrivatesRoutines(username) {
-        try {
-
-            const response = await fetch()
-
-
-
-            const json = await response.json();
-                if (json.error) {
-                alert(json.error);
-                  }
-        } catch (error) {
-            console.error(error)
-        }
-      }
-
-    const handleCheckbox = () => {
-        setIsPublic(!isPublic);
-    };
-
+      const numDescending = [...routines].sort((a, b) => b.id - a.id);
 
       return (
-        <div>
-                <form className={styles.container} onSubmit={(e) => {
-                    setName('');
-                    setGoal('');
-                    e.preventDefault();
-                }}>
-                    <div className={styles.input_all}>
-                            <input className={styles.input}
-                                placeholder='Enter Name'
-                                onChange={(e) => setName(e.target.value)} />
-                            <input className={styles.input}
-                                placeholder='Enter Goal'
-                                onChange={(e) => setGoal(e.target.value)} />
-                            <label>
-                              <input type="checkbox" checked={isPublic} onChange={handleCheckbox} />Public
-                            </label>
 
-                            <Link to="/myroutines"><button className={buttonStyles.button} onClick={addRoutine}>Create Routine</button></Link>
-                    </div>
-                </form>
+            <div className={styles.container}>
 
-                {/* <div className={styles.container}>
-                <div className={styles.routines_top}>
-                    <h2>Routines</h2>
-                </div>
+                  <Link to="/addroutine"><button className={buttonStyles.button}>Add New Routine</button></Link>
+                  <div>
+                        <h2>My Routines</h2>
+                  </div>
 
-                {.map((routine) =>
-                    <div key={routine.id} className={styles.routines_text}>
-                            <RoutineCard
-                                key={routine.id}
-                                routine={routine}
-                            />
-                    </div>
-                )
-                }
-                </div> */}
-
+                  {numDescending.map((routine) =>
+                        <div key={routine.id} className={styles.routines_text}>
+                        
+                                    <RoutineCard
+                                          key={routine.id}
+                                          routine={routine}
+                                    />
+                                    <span className={styles.postcard_button}>
+                                          <button className={buttonStyles.button}
+                                                onClick={() => {
+                                                      history.push(`/myroutines/${routine.id}`);
+                                                }
+                                                }>Edit Routine</button>
+                                    </span>
+                              
+                        </div>
+                  )
+                  }
             </div>
       );
 }
 
-export default AddRoutine;
+
+export default MyRoutines;

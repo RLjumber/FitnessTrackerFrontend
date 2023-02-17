@@ -9,9 +9,10 @@ import MyRoutines from './components/MyRoutines';
 import Home from './components/Home';
 import styles from './App.module.css';
 import AddRoutine from './components/AddRoutine';
+import EditMyRoutine from './components/EditMyRoutine';
+
 function App() {
   const BASE_URL = 'http://fitnesstrac-kr.herokuapp.com/api';
-
   const jwt = localStorage.getItem('jwt');
   const [myUserName, setMyUserName] = useState('');
   const [username, setUsername] = useState('');
@@ -83,41 +84,52 @@ function App() {
               jwt={jwt}
               BASE_URL={BASE_URL} />
           </Route>
-          
-          <Route exact path = {"/addactivity"}>
+
+          <Route exact path={"/addactivity"}>
             <AddActivity
-            BASE_URL={BASE_URL}
-            jwt={jwt} />
+              BASE_URL={BASE_URL}
+              jwt={jwt} />
           </Route>
-          
-          <Route exact path = {"/activities"}>
+
+          <Route exact path={"/activities"}>
             <Activities
-            BASE_URL={BASE_URL}
+              BASE_URL={BASE_URL}
             />
           </Route>
 
-          <Route exact path = {"/myroutines"}>
-            <MyRoutines 
+          <Route exact path={"/myroutines"}>
+            <MyRoutines
               BASE_URL={BASE_URL}
               jwt={jwt}
-              />
+              myUserName={myUserName}
+              setMyUserName={setMyUserName}
+            />
           </Route>
 
-          {/* <Route exact path={"/:username/routines"}
+          <Route exact path={"/addroutine"}>
+            <AddRoutine
+              BASE_URL={BASE_URL}
+              jwt={jwt}
+            />
+          </Route>
+
+          <Route exact path={"/myroutines/:routineId"}
             render={
               (routeProps) => {
                 const {
                   match: {
                     params: {
-                      username,
+                      routineId,
                     },
                   },
                 } = routeProps;
                 return (
-                  <MyRoutines
+                  <EditMyRoutine
+                    routineId={routineId}
                     jwt={jwt}
                     BASE_URL={BASE_URL}
-                    username={username}
+                    myUserName={myUserName}
+                    setMyUserName={setMyUserName}
                   />
                 );
               }
