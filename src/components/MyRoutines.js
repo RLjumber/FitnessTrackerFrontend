@@ -11,7 +11,6 @@ const MyRoutines = (props) => {
       const jwt = props.jwt;
       const myUserName = props.myUserName;
       const history = useHistory();
-      console.log(myUserName);
 
       useEffect(() => {
             async function fetchMyRoutines() {
@@ -33,7 +32,7 @@ const MyRoutines = (props) => {
                   }
             };
             fetchMyRoutines();
-      }, [BASE_URL, jwt, myUserName, setRoutines]);
+      }, [BASE_URL, jwt, myUserName]);
 
       const numDescending = [...routines].sort((a, b) => b.id - a.id);
 
@@ -48,24 +47,23 @@ const MyRoutines = (props) => {
 
                   {numDescending.map((routine) =>
                         <div key={routine.id} className={styles.routines_text}>
-                        
-                                    <RoutineCard
-                                          key={routine.id}
-                                          routine={routine}
-                                    />
-                                    <span className={styles.postcard_button}>
-                                          <button className={buttonStyles.button}
-                                                onClick={() => {
-                                                      history.push(`/myroutines/${routine.id}`);
-                                                }
-                                                }>Edit Routine</button>
-                                            <button className={buttonStyles.button}
-                                                onClick={() => {
-                                                    AddActivityToRoutine();
-                                                }}
-                                            >Add Activity</button>
-                                    </span>
-                              
+                              <RoutineCard
+                                    key={routine.id}
+                                    routine={routine}
+                              />
+                              <span className={styles.postcard_button}>
+                                    <button className={buttonStyles.button}
+                                          onClick={() => {
+                                                history.push(`/myroutines/${routine.id}`);
+                                          }
+                                          }>Edit/Delete Routine</button>
+                                    <button className={buttonStyles.button}
+                                          onClick={() => {
+                                                AddActivityToRoutine();
+                                          }}
+                                    >Add Activity</button>
+                              </span>
+
                         </div>
                   )
                   }
