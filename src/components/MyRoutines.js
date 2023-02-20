@@ -3,7 +3,6 @@ import { useHistory, Link } from "react-router-dom";
 import RoutineCard from './RoutineCard';
 import styles from './MyRoutines.module.css';
 import buttonStyles from './button.module.css';
-import { AddActivityToRoutine } from './AddActivityToRoutine';
 
 const MyRoutines = (props) => {
       const BASE_URL = props.BASE_URL;
@@ -25,7 +24,7 @@ const MyRoutines = (props) => {
 
                         const json = await response.json();
                         setRoutines(json);
-                        console.log(json);
+                        
 
                   } catch (error) {
                         console.error(error);
@@ -59,9 +58,10 @@ const MyRoutines = (props) => {
                                           }>Edit/Delete Routine</button>
                                     <button className={buttonStyles.button}
                                           onClick={() => {
-                                                AddActivityToRoutine();
+                                                history.push(`/addactivity/${routine.id}`);
                                           }}
                                     >Add Activity</button>
+                                
                               </span>
 
                         </div>

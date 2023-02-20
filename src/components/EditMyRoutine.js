@@ -49,7 +49,7 @@ const EditMyRoutine = (props) => {
 
                   const json = await resp.json();
                   setRoutines(json);
-                  console.log(routines);
+                 
             } catch (error) {
                   console.error(error);
             }

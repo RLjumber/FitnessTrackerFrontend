@@ -11,7 +11,6 @@ const AddActivity = (props) => {
 
       async function addActivity() {
             try {
-
                   const response = await fetch(
                         `${BASE_URL}/activities`, {
                         method: "POST",
