@@ -19,12 +19,12 @@ const Activities = (props) => {
         }).then(response => response.json())
             .then(result => {
                 setActivities(result)
-                //console.log("Activities: ", result);
+                
             })
             .catch(console.error);
     }, [BASE_URL]);
 
-    //console.log("SCARY", activities)
+    
     
     //Sort the activiites in descending order, when new one created shows up first
     const numDescending = [...activities].sort((a, b) => b.id - a.id);
@@ -42,8 +42,8 @@ const Activities = (props) => {
                 {numDescending.map(activity => {
                     return (
                         <li key={activity.id} className={styles.activity}>
-                            <p>{activity.name}</p>
-                            <p>{activity.description}</p>
+                            <p>Name: {activity.name}</p>
+                            <p>Description: {activity.description}</p>
                         </li>
 
                     )

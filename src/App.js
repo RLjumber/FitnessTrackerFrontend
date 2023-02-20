@@ -10,9 +10,10 @@ import Home from './components/Home';
 import styles from './App.module.css';
 import AddRoutine from './components/AddRoutine';
 import EditMyRoutine from './components/EditMyRoutine';
+import AddActivityToRoutine from './components/AddActivityToRoutine';
 
 function App() {
-  const BASE_URL = 'http://fitnesstrac-kr.herokuapp.com/api';
+  const BASE_URL = 'https://fitnesstrac-kr.herokuapp.com/api';
   const jwt = localStorage.getItem('jwt');
   const [myUserName, setMyUserName] = useState('');
   const [username, setUsername] = useState('');
@@ -130,6 +131,27 @@ function App() {
                     BASE_URL={BASE_URL}
                     myUserName={myUserName}
                     setMyUserName={setMyUserName}
+                  />
+                );
+              }
+            }
+          />
+
+          <Route exact path={"/addactivity/:routineId"}
+            render={
+              (routeProps) => {
+                const {
+                  match: {
+                    params: {
+                      routineId,
+                    },
+                  },
+                } = routeProps;
+                return (
+                  <AddActivityToRoutine
+                    routineId={routineId}
+                    jwt={jwt}
+                    BASE_URL={BASE_URL}
                   />
                 );
               }

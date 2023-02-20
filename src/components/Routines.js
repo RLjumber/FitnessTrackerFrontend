@@ -18,7 +18,7 @@ const Routines = (props) => {
 
                         const json = await response.json();
                         setRoutines(json);
-                        console.log(json);
+                       
 
                   } catch (error) {
                         console.error(error);
@@ -27,13 +27,15 @@ const Routines = (props) => {
             fetchRoutines();
       }, [BASE_URL]);
 
+      const numDescending = [...routines].sort((a, b) => b.id - a.id);
+
       return (
             <div className={styles.container}>
                   <div className={styles.routines_top}>
                         <h2>Routines</h2>
                   </div>
 
-                  {routines.map((routine) =>
+                  {numDescending.map((routine) =>
                         <div key={routine.id} className={styles.routines_text}>
                               <RoutineCard
                                     key={routine.id}

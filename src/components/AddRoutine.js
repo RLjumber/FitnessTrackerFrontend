@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import buttonStyles from './button.module.css';
-import styles from './Routines.module.css';
+import styles from './AddRoutine.module.css';
 
 const AddRoutine = (props) => {
       const jwt = props.jwt;
